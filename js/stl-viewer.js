@@ -42,7 +42,7 @@ class STLViewer extends HTMLElement {
 
     new THREE.STLLoader().load(model, (geometry) => {
       let material = new THREE.MeshPhongMaterial({
-        color: 0x6A39FF,
+        color: {__REPLACE_COLOR__},
         specular: 100,
         shininess: 100,
       });

@@ -37,6 +37,10 @@ def __generate_model(parameters):
     bp.length = parameters['length']
     bp.width = parameters['width']
     bp.height = parameters['height']
+    bp.rail_width = parameters['rail_width']
+    bp.rung_height = parameters['rung_height']
+    bp.rung_width = parameters['rung_width']
+    bp.rung_padding = parameters['rung_padding']
     #ladder_bp.make_rung = _make_rung
     #ladder_bp.make_side_rail = _make_side_rail
     bp.make()
@@ -58,7 +62,7 @@ def __generate_preview_image(model, image_name, camera):
         "hiddenColor": rgb_2
     })
 
-def __stl_preview():
+def __stl_preview(color):
     # Load and embed the JavaScript file
     with open("js/three.min.js", "r") as js_file:
         three_js = js_file.read()
@@ -70,7 +74,8 @@ def __stl_preview():
         orbital_controls = js_file.read()
 
     with open("js/stl-viewer.js", "r") as js_file:
-        stl_viewer_component = js_file.read()
+        stl_viewer_component = js_file.read().replace('{__REPLACE_COLOR__}',f'0x{color[1:]}')
+        
 
 
     components.html(
@@ -90,6 +95,7 @@ def __stl_preview():
 
 def make_model_controls(
     parameters,
+    color,
     file_controls
 ):
     start = time.time()
@@ -107,7 +113,7 @@ def make_model_controls(
         end = time.time()
 
         #st.write("Preview:")
-        __stl_preview()
+        __stl_preview(color)
         #st.image(PREVIEW_NAME)
 
         if f'{EXPORT_NAME}.{export_type}' not in os.listdir():

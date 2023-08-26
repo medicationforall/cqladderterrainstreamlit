@@ -30,6 +30,10 @@ def __make_ui():
 
     with tab2:
         file_controls = make_file_controls()
+
+    _, col2, _= st.columns(3)
+    with col2:
+        color1 = st.color_picker('Primary Color', '#E0BD00')
     
     if 'key'not in st.session_state:
         st.session_state['key'] = 0
@@ -39,7 +43,8 @@ def __make_ui():
     if st.button('Generate Model', type="primary") or st.session_state['key']==0:
         
         make_model_controls(
-            model_parameters, 
+            model_parameters,
+            color1, 
             file_controls
         )
     else:
