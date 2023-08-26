@@ -4,7 +4,7 @@ Streamlit Gui that uses my code from [cqterrain](https://github.com/medicationfo
 
 ![](01.png)
 
-View the demo as a [Streamlit App](https://cqboxtest.streamlit.app/)
+View the demo as a [Streamlit App](https://ladderterrain.streamlit.app/)
 
 
 
